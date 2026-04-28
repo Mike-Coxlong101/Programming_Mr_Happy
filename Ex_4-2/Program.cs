@@ -29,6 +29,8 @@
 
 
 
+using Ex_4_2;
+
 namespace Ex4_2 // Namespace muss mit Großbuchstaben anfangen camelcase
 {
     public class Room //auch immer mit großbuchstaben beginnen
@@ -92,6 +94,15 @@ namespace Ex4_2 // Namespace muss mit Großbuchstaben anfangen camelcase
             {
                 Console.WriteLine("There seems to be something wrong with the maze!"); // Falls connecting 
             }
+
+            Maze maz2 = new Maze("maze2");
+            Player pla = new Player(maz.getStartRoom());
+            pla.move('N');
+            pla.move('E');
+            pla.move('E');
+            Console.WriteLine("The player is now in {0}", pla.getCurrentRoom().GetName());
+
+
         }
 
     }
