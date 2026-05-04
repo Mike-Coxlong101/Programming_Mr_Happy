@@ -97,14 +97,29 @@ namespace Ex4_2 // Namespace muss mit Großbuchstaben anfangen camelcase
 
             Maze maz2 = new Maze("maze2");
             Player pla = new Player(maz.getStartRoom());
-            pla.move('N');
-            pla.move('E');
-            pla.move('E');
-            Console.WriteLine("The player is now in {0}", pla.getCurrentRoom().GetName());
+            while (pla.getCurrentRoom() != maz.getWinningRoom() && pla.getCurrentRoom() != maz.getLosingRoom())
+            {
+                Console.WriteLine("You are currently in {0}", pla.getCurrentRoom().GetName());
+                Console.WriteLine("Where do you want to go? (N,S,E,W)");
+                char direction = Console.ReadKey().KeyChar;
+                Console.WriteLine();
+                if (!pla.move(direction))
+                {
+                    Console.WriteLine("You can't go in that direction!");
+                }
 
+            }
 
+            if (pla.getCurrentRoom() == maz.getWinningRoom())
+            {
+                Console.WriteLine("Congratulations! You won the maze!");
+            }
+            else
+            {
+                Console.WriteLine("Oh no! You lost the maze!");
+
+            }
         }
-
     }
 
     public class Maze
