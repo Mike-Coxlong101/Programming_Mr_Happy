@@ -21,7 +21,7 @@
 
 
 
-namespace Ex_5_Maze_Game
+namespace Ex_6_Maze_Game
 {
     internal static class Program
     {

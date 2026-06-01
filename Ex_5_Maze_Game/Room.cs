@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ex_5_Maze_Game
+namespace Ex_6_Maze_Game
 {
     public class Room //auch immer mit großbuchstaben beginnen
     {
         private string _name; //private Felder mit unterstrich
         private Room? _north, _south, _east, _west; // enthalten die Infromation welche Räume benachbart sind
+
+        private List<Item> _content; // dynamisches array welches objekte der Klasse item enthält
 
         //Jetzt ist ein Konstruktor notwendig damit ein Object erstellt werden kann
 

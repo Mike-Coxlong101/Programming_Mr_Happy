@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ex_5_Maze_Game
+namespace Ex_6_Maze_Game
 {
     public class Maze
     {
@@ -10,6 +10,7 @@ namespace Ex_5_Maze_Game
         private Room _startRoom;
         private Room _winningRoom;
         private Room _losingRoom;
+        private Player player;
 
         public Maze(string name)
         {
@@ -32,6 +33,20 @@ namespace Ex_5_Maze_Game
             _startRoom = Bathroom;
             _winningRoom = Exit;
             _losingRoom = HsRoom;
+
+            //Items der Räume hinzufügen
+            Item Key = new Item("key", true);
+            Item gun = new Item("gun", true);
+            Item brickwall = new Item("brickwall", false);
+            Item dynamite = new Item("dynamite", true);
+            Item Koks = new Item ("Koks", true);
+            Item Ketamin = new Item("Ketamin", true);
+
+            player = new Player(_startRoom);
+            player.AddItemToBag(Ketamin); 
+            
+
+            
         }
         public Room getWinningRoom()
         {
@@ -48,7 +63,10 @@ namespace Ex_5_Maze_Game
             return _losingRoom;
         }
 
-
+        internal Player GetPlayer()
+        {
+            return player;
+        }
 
     }
 }

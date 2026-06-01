@@ -1,21 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+/*
+ * Der Player hat ein inventar das bedeutet er benötigt eine Liste welche Objecte vom Typ item beeinhaltet. Im ULM wird das Symbolisiert durch
+ * einen Pfeil von Player zu dem Object Item das * bedeutet er kann 0 oder unendlich viele items haben.
+ */
 
-
-namespace Ex_5_Maze_Game
+namespace Ex_6_Maze_Game
 {
     internal class Player
     {
         private Room _currentRoom; //steht nicht im UML aber es ist notwendig damit der Spieler weiß wo er sich befindet
+        private List<Item> _bag; //muss hier stehen damit klar ist, dass der Player dauerhaft eine Liste hat welche private ist. Im Konstruktor steht nie eine Variable die angelegt wird da es wie eine Funktion ist.
+        
         public Player(Room CurrentRoom)
         {
             this._currentRoom = CurrentRoom;
+            this._bag = new List<Item>(); 
         }
 
         public Room getCurrentRoom()
         {
-            return _currentRoom;
+            return _currentRoom; 
+        }
+
+        public bool AddItemToBag(Item item)
+        {
+            if (item != null) 
+            {
+                this._bag.Add(item);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool move(char direction)
