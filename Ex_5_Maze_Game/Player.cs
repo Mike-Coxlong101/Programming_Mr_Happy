@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Ex_6_Maze_Game
 {
-    internal class Player
+    public class Player
     {
         private Room _currentRoom; //steht nicht im UML aber es ist notwendig damit der Spieler weiß wo er sich befindet
         private List<Item> _bag; //muss hier stehen damit klar ist, dass der Player dauerhaft eine Liste hat welche private ist. Im Konstruktor steht nie eine Variable die angelegt wird da es wie eine Funktion ist.
@@ -35,6 +35,24 @@ namespace Ex_6_Maze_Game
             {
                 return false;
             }
+        }
+
+        //Wenn der User eine Item ausgewählt hat in der Linken List Box und dann drop drückt wird diese Funktion aufgerufen.
+        public bool RemoveFromBag(Item ItemInUse)
+        {
+            if(this._bag.Count != 0)
+            {
+                _currentRoom.AddContent(ItemInUse);
+                this._bag.Remove(ItemInUse);
+                return true;
+            }
+            return false;
+        }
+
+
+        public List<Item> IsInBag()
+        {
+            return this._bag;
         }
 
         public bool move(char direction)

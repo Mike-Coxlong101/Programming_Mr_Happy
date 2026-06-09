@@ -1,6 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+/*
+ * Die Sichtbarkeit der Variablen muss mmit Methoden abgestimmt sein, da die Argumente nich tweniger Sichtbar sein dürfen als die MEthode.
+ * 
+ */
+
+
+
 
 namespace Ex_6_Maze_Game
 {
@@ -43,7 +50,12 @@ namespace Ex_6_Maze_Game
             Item Ketamin = new Item("Ketamin", true);
 
             player = new Player(_startRoom);
-            player.AddItemToBag(Ketamin); 
+            player.AddItemToBag(Ketamin);
+            Kitchen.AddContent(Key);
+            LivingRoom.AddContent(gun);
+            Bathroom.AddContent(brickwall);
+            Bedroom.AddContent(Koks);
+
             
 
             

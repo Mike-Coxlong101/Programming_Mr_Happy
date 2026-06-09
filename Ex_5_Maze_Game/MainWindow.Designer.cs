@@ -38,11 +38,14 @@
             buttonS = new Button();
             PlayerItemsLabel = new Label();
             RoomItemsLabel = new Label();
-            listBox1 = new ListBox();
-            listBox2 = new ListBox();
+            listBoxRoom = new ListBox();
+            listBoxPlayer = new ListBox();
             UseButton = new Button();
             DropButton = new Button();
             PickupButton = new Button();
+            labelPickable = new Label();
+            textBox2 = new TextBox();
+            labelWarnings = new Label();
             SuspendLayout();
             // 
             // textMission
@@ -140,22 +143,23 @@
             RoomItemsLabel.TabIndex = 9;
             RoomItemsLabel.Text = "The romm contains:";
             // 
-            // listBox1
+            // listBoxRoom
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.Location = new Point(387, 305);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(174, 184);
-            listBox1.TabIndex = 10;
+            listBoxRoom.FormattingEnabled = true;
+            listBoxRoom.Location = new Point(387, 305);
+            listBoxRoom.Name = "listBoxRoom";
+            listBoxRoom.Size = new Size(174, 184);
+            listBoxRoom.TabIndex = 10;
+            listBoxRoom.SelectedIndexChanged += listBoxRoom_SelectedIndexChanged;
             // 
-            // listBox2
+            // listBoxPlayer
             // 
-            listBox2.FormattingEnabled = true;
-            listBox2.Location = new Point(74, 305);
-            listBox2.Name = "listBox2";
-            listBox2.Size = new Size(175, 184);
-            listBox2.TabIndex = 11;
-            listBox2.SelectedIndexChanged += listBox2_SelectedIndexChanged;
+            listBoxPlayer.FormattingEnabled = true;
+            listBoxPlayer.Location = new Point(74, 305);
+            listBoxPlayer.Name = "listBoxPlayer";
+            listBoxPlayer.Size = new Size(175, 184);
+            listBoxPlayer.TabIndex = 11;
+            listBoxPlayer.SelectedIndexChanged += listBox2_SelectedIndexChanged;
             // 
             // UseButton
             // 
@@ -174,7 +178,7 @@
             DropButton.TabIndex = 13;
             DropButton.Text = "Drop  >";
             DropButton.UseVisualStyleBackColor = true;
-            DropButton.Click += button2_Click;
+            DropButton.Click += DropButton_Click;
             // 
             // PickupButton
             // 
@@ -184,17 +188,47 @@
             PickupButton.TabIndex = 14;
             PickupButton.Text = "< Pickup";
             PickupButton.UseVisualStyleBackColor = true;
+            PickupButton.Click += PickupButton_Click;
+            // 
+            // labelPickable
+            // 
+            labelPickable.AutoSize = true;
+            labelPickable.Location = new Point(278, 433);
+            labelPickable.Name = "labelPickable";
+            labelPickable.Size = new Size(71, 20);
+            labelPickable.TabIndex = 15;
+            labelPickable.Text = "?Pickable";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(76, 173);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(69, 27);
+            textBox2.TabIndex = 16;
+            textBox2.Text = "Warnings:";
+            // 
+            // labelWarnings
+            // 
+            labelWarnings.AutoSize = true;
+            labelWarnings.Location = new Point(160, 176);
+            labelWarnings.Name = "labelWarnings";
+            labelWarnings.Size = new Size(103, 20);
+            labelWarnings.TabIndex = 17;
+            labelWarnings.Text = "labelWarnings";
             // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1055, 626);
+            Controls.Add(labelWarnings);
+            Controls.Add(textBox2);
+            Controls.Add(labelPickable);
             Controls.Add(PickupButton);
             Controls.Add(DropButton);
             Controls.Add(UseButton);
-            Controls.Add(listBox2);
-            Controls.Add(listBox1);
+            Controls.Add(listBoxPlayer);
+            Controls.Add(listBoxRoom);
             Controls.Add(RoomItemsLabel);
             Controls.Add(PlayerItemsLabel);
             Controls.Add(buttonS);
@@ -224,10 +258,13 @@
         private Button buttonS;
         private Label PlayerItemsLabel;
         private Label RoomItemsLabel;
-        private ListBox listBox1;
-        private ListBox listBox2;
+        private ListBox listBoxRoom;
+        private ListBox listBoxPlayer;
         private Button UseButton;
         private Button DropButton;
         private Button PickupButton;
+        private Label labelPickable;
+        private TextBox textBox2;
+        private Label labelWarnings;
     }
 }

@@ -17,11 +17,36 @@ namespace Ex_6_Maze_Game
             InitializeComponent();
         }
 
+        //Methode um Inhalte es Raums zu aktualisieren
+
+        private void UpdateRoom()
+        {
+            labelPickable.Text = ("");
+            labelWarnings.Text = ("");
+
+            this.listBoxPlayer.Items.Clear();
+            foreach (Item it in player.IsInBag())
+            {
+                this.listBoxPlayer.Items.Add(it);
+            }
+
+            this.listBoxRoom.Items.Clear();
+            foreach (Item it in player.getCurrentRoom().IsContent())
+            {
+                this.listBoxRoom.Items.Add(it);
+            }
+
+        }
+
+
+
+
         private void move(char direction)
         {
             if (player.move(direction))
             {
                 labelLocation.Text = player.getCurrentRoom().GetName();
+                UpdateRoom(); // Die Listen werden geupdatet.
             }
             else
             {
@@ -60,10 +85,13 @@ namespace Ex_6_Maze_Game
         {
 
             maze = new Maze("maze");
-            player = maze.GetPlayer(); 
-          
+            player = maze.GetPlayer();
+
             labelLocation.Text = player.getCurrentRoom().GetName();
             MessageBox.Show("Welcome to the Maze Game! Your goal is to find the winning room while avoiding the losing room. Use the buttons to move North, South, East, or West. Good luck!");
+            UpdateRoom();
+            labelPickable.Text = ("");
+            labelWarnings.Text = ("");
         }
 
         private void buttonW_Click(object sender, EventArgs e)
@@ -86,9 +114,48 @@ namespace Ex_6_Maze_Game
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void DropButton_Click(object sender, EventArgs e)
+        {
+            Item ausgewaeltesItem = (Item)this.listBoxPlayer.SelectedItem;
+            if (ausgewaeltesItem != null)
+            {
+                if (player.RemoveFromBag(ausgewaeltesItem))
+                {
+                    UpdateRoom();
+                }
+
+            }
+        }
+
+        private void PickupButton_Click(object sender, EventArgs e)
         {
 
+            Item ausgewaeltesItem = (Item)this.listBoxRoom.SelectedItem;
+            if (ausgewaeltesItem != null && ausgewaeltesItem.isPickable())
+            {
+                player.AddItemToBag(player.getCurrentRoom().RemoveFromRoom(ausgewaeltesItem));
+                UpdateRoom();
+                labelPickable.Text = ("Pickable");
+            }
+            else
+            {
+                labelPickable.Text = ("Not Pickable");
+            }
+
+        }
+
+        private void listBoxRoom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Item clickedItem = (Item)this.listBoxRoom.SelectedItem;
+            if (clickedItem != null && clickedItem.isPickable())
+            {
+                labelPickable.Text = ("Pickable");
+            }
+            else
+            {
+                labelPickable.Text = ("Not Pickable!");
+                labelWarnings.Text = ("Too heavy");
+            }
         }
     }
 }

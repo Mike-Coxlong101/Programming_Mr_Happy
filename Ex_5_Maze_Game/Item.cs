@@ -8,7 +8,7 @@ using System.Text;
  */
 namespace Ex_6_Maze_Game
 {
-    internal class Item
+    public class Item
     {
         private string _name; // erzeugt ein privates Feld für den Namen des Items 
         private bool _pickable; // erzeugt ein privates Feld für die Information ob das Item aufhebbar ist oder nicht
@@ -27,6 +27,7 @@ namespace Ex_6_Maze_Game
         {
             return this._name;
         }
+
         //getter Methode mit is davor weil besser verständlich als get und weil es sich um eine boolsche Variable handelt?
         public bool isPickable() //funktion die zurück gibt ob das Item aufhebbar ist oder nicht
         {

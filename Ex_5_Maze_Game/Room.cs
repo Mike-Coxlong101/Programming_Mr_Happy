@@ -16,6 +16,32 @@ namespace Ex_6_Maze_Game
         public Room(string name)
         {
             this._name = name; //this stellt bezug zum privaten Feld oben her.
+            this._content = new List<Item>();
+        }
+
+        public bool AddContent(Item item)
+        {
+            if (item != null)
+            {
+                this._content.Add(item);
+                return true;
+            }
+            else return false;
+        }
+
+        public Item RemoveFromRoom(Item SelectedItem)
+        {
+            if(SelectedItem != null)
+            {
+                this._content.Remove(SelectedItem);
+                return SelectedItem;
+            }
+            return null;
+        }
+        
+        public List<Item> IsContent()
+        {
+            return this._content;
         }
 
         public void SetConnectedRoom(Room? north, Room? south, Room? east, Room? west) // das Fragezeichen ist notwendig wegen NULL
