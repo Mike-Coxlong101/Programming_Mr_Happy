@@ -6,7 +6,7 @@ using System.Text;
  * einen Pfeil von Player zu dem Object Item das * bedeutet er kann 0 oder unendlich viele items haben.
  */
 
-namespace Ex_6_Maze_Game
+namespace Ex_7_Maze_Game
 {
     public class Player
     {

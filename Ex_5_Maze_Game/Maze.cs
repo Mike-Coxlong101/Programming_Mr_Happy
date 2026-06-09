@@ -9,7 +9,7 @@ using System.Text;
 
 
 
-namespace Ex_6_Maze_Game
+namespace Ex_7_Maze_Game
 {
     public class Maze
     {
@@ -48,9 +48,11 @@ namespace Ex_6_Maze_Game
             Item dynamite = new Item("dynamite", true);
             Item Koks = new Item ("Koks", true);
             Item Ketamin = new Item("Ketamin", true);
+            HoodenStick hoodenStick = new HoodenStick("Hodenstick", true);
 
             player = new Player(_startRoom);
             player.AddItemToBag(Ketamin);
+            player.AddItemToBag(hoodenStick);
             Kitchen.AddContent(Key);
             LivingRoom.AddContent(gun);
             Bathroom.AddContent(brickwall);

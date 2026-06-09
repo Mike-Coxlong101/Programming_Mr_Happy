@@ -1,4 +1,4 @@
-﻿namespace Ex_6_Maze_Game
+﻿namespace Ex_7_Maze_Game
 {
     partial class MainWindow
     {
@@ -169,6 +169,7 @@
             UseButton.TabIndex = 12;
             UseButton.Text = "Use";
             UseButton.UseVisualStyleBackColor = true;
+            UseButton.Click += UseButton_Click;
             // 
             // DropButton
             // 

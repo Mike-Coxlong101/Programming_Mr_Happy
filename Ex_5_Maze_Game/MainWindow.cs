@@ -1,6 +1,6 @@
 using System.Security.Cryptography.X509Certificates;
 
-namespace Ex_6_Maze_Game
+namespace Ex_7_Maze_Game
 {
     public partial class
 
@@ -156,6 +156,17 @@ namespace Ex_6_Maze_Game
                 labelPickable.Text = ("Not Pickable!");
                 labelWarnings.Text = ("Too heavy");
             }
+        }
+
+        private void UseButton_Click(object sender, EventArgs e)
+        {
+            Item clickedItem = (Item)this.listBoxPlayer.SelectedItem;
+            if (clickedItem != null)
+            {
+                clickedItem.use( player);
+                UpdateRoom();
+            }
+            
         }
     }
 }

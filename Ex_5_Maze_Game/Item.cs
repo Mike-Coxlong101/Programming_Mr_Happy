@@ -6,7 +6,7 @@ using System.Text;
  *Listen:
  *Listen stellen arrays dar die dynamisch in der Größe sind. 
  */
-namespace Ex_6_Maze_Game
+namespace Ex_7_Maze_Game
 {
     public class Item
     {
@@ -34,9 +34,9 @@ namespace Ex_6_Maze_Game
             return this._pickable;
         }
 
-        public void use(Player user)
+        public virtual void use( Player user)
         {
-            // Implement the logic for using the item here
+            // Implement the logic for using the item he
         }
     }
 }
